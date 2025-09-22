@@ -38,13 +38,13 @@ autonumber
     create participant T as Thread
     S ->> T: Cria
     T -->> C: 
-    S ->> C: Mensagem de conexão
+    T ->> C: Mensagem de conexão
     loop Pedido != Sair
-        S ->> C: Ação (Desligar/Ligar)
-        C ->> S: Resposta (Desligado/Ligado)
+        T ->> C: Ação (Desligar/Ligar)
+        C ->> T : Resposta (Desligado/Ligado)
     end
     S ->> T: Finaliza
-    S ->> C: Mensagem de fim
+
 ```
 ## Descriçao
 
@@ -56,12 +56,12 @@ Caso exista mais clientes, entao a o Servidor criara mais threads com as mesmas 
 
 1. **Thread** Conecta com o cliente
 
-1. **Servidor** responde que esta conectado com o cliente
+1. **Thread** responde que esta conectado com o cliente
 
-1. **Açao** do servidor no cliente desliga ou liga o iot client
+1. **Açao** da Thread no cliente desliga ou liga o  cliente
 
 1. **Cliente** responde seu estado atual ou seja se esta ligado ou desligado
 
 1. Apos receber a mensagem sair o servidor finaliza a **thread** 
 
-1. **Servidor** diz que esta desconectando ao cliente
+
