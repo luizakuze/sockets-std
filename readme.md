@@ -48,6 +48,8 @@ autonumber
 ```
 ## Descriçao
 
+Caso exista mais clientes, entao a o Servidor criara mais threads com as mesmas acoes descritas.
+
 1. **Cliente** solicita conexao com o servidor 
 
 1. **Servidor** Cria a thread
