@@ -6,6 +6,7 @@
 ---
 config:
     sequence:
+
     mirrorActors: false
 ---
 sequenceDiagram
@@ -16,8 +17,8 @@ autonumber
     C ->> S: Conexão
     S ->> C: Mensagem de conexão
     loop Pedido != Sair
-        S ->> C: Pedido
-        C ->> S: Resposta
+        S ->> C: Acão (Desligar/Ligar)
+        C ->> S: Resposta (Desligado/Ligado)
     end
 ```
 
@@ -39,9 +40,26 @@ autonumber
     T -->> C: 
     S ->> C: Mensagem de conexão
     loop Pedido != Sair
-        S ->> C: Pedido
-        C ->> S: Resposta
+        S ->> C: Ação (Desligar/Ligar)
+        C ->> S: Resposta (Desligado/Ligado)
     end
     S ->> T: Finaliza
     S ->> C: Mensagem de fim
 ```
+## Descriçao
+
+1. **Cliente** solicita conexao com o servidor 
+
+1. **Servidor** Cria a thread
+
+1. **Thread** Conecta com o cliente
+
+1. **Servidor** responde que esta conectado com o cliente
+
+1. **Açao** do servidor no cliente desliga ou liga o iot client
+
+1. **Cliente** responde seu estado atual ou seja se esta ligado ou desligado
+
+1. Apos receber a mensagem sair o servidor finaliza a **thread** 
+
+1. **Servidor** diz que esta desconectando ao cliente
